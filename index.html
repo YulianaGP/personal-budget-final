@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gestor de Presupuesto</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans">
+
+    <header class="bg-white shadow p-4 text-center text-xl font-bold">
+        Gestor de Presupuesto Personal
+    </header>
+
+    <main class="p-6 max-w-3xl mx-auto">
+        <!-- Formulario -->
+        <section class="bg-white rounded-lg shadow p-4 mb-6">
+            <h2 class="text-xl font-semibold mb-4">Registrar Movimiento</h2>
+
+            <form id="formulario" class="p-4 bg-white rounded shadow-md max-w-xl mx-auto">
+                <!--Tipo de movimiento-->
+                <div class="mb-4">
+                    <select id="tipo" class="mt-1 block w-full border border-gray-300 rounded p-2">
+                        <option value="">Selecciona tipo</option>
+                        <option value="ingreso">Ingreso</option>
+                        <option value="egreso">Egreso</option>
+                    </select>
+                </div>
+                
+                <!-- Categorías dinámicas -->
+                <div class="mb-4">
+                    <select
+                        id="categoria"
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight"
+                        required
+                    >
+                        <!-- Las opciones se llenarán dinámicamente -->
+                    </select>
+                </div>
+
+                <!-- Nombre del movimiento -->
+                <div class="mb-4">
+                    <input
+                    type="text"
+                    id="nombre"
+                    placeholder="Nombre del gasto o ingreso"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight"
+                    required
+                    />
+                </div>
+
+                <!-- Monto del movimiento -->
+                <div class="mb-4">
+                    <input
+                        type="number"
+                        id="monto"
+                        placeholder="Monto"
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight"
+                    required
+                    />
+                </div>
+
+                <!--Botón de agregar movimiento-->
+                <div class="flex justify-end">
+                    <button
+                        type="submit"
+                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                    >
+                    Agregar movimiento
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Totales -->
+        <section class="grid grid-cols-3 gap-4 mb-6">
+          <div id="filtro-todos" class="bg-gray-100 p-4 rounded shadow text-center cursor-pointer">
+            <h3 class="font-semibold text-gray-700">Balance</h3>
+            <p id="balance-total" class="text-xl font-bold text-gray-900">$0</p>
+          </div>
+          <div id="filtro-ingresos" class="bg-green-100 p-4 rounded shadow text-center cursor-pointer">
+            <h3 class="font-semibold text-green-700">Total Ingresos</h3>
+            <p id="total-ingresos" class="text-xl font-bold text-green-800">$0</p>
+          </div>
+          <div id="filtro-egresos" class="bg-red-100 p-4 rounded shadow text-center cursor-pointer">
+            <h3 class="font-semibold text-red-700">Total Egresos</h3>
+            <p id="total-egresos" class="text-xl font-bold text-red-800">$0</p>
+          </div>
+        </section>
+
+        <!-- Tabla de movimientos -->
+        <section class="bg-white p-4 rounded shadow">
+            <h2 class="text-lg font-bold mb-4">Historial de Movimientos</h2>
+            <table class="min-w-full table-auto border-collapse border border-gray-300">
+                <thead class="bg-gray-100">
+                    <tr>
+                        <th class="border px-4 py-2">Fecha</th>
+                        <th class="border px-4 py-2">Nombre</th>
+                        <th id="th-categoria" class="relative cursor-pointer">Categoría</th>
+                        <th class="border px-4 py-2">Monto</th>
+                        <th class="border px-4 py-2">Tipo</th>
+                        <th class="border px-4 py-2">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="tabla-movimientos"></tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer class="text-center p-4 text-sm text-gray-500">
+        &copy; Derechos de autor; 2025 Gestor de Presupuesto - Proyecto del Modulo 2
+    </footer>
+
+    <script src="./js/app.js"></script>
+</body>
+</html>
